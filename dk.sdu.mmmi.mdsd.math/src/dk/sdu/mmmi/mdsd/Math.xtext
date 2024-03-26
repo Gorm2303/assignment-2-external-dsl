@@ -7,15 +7,15 @@ MathExp:
 ;
 
 Exp returns Expression:
-	Factor (('+' {Plus.left=current} | '-' {Minus.left=current}) right=Factor)*
+	{Factor} (('+' {Plus.left=current} | '-' {Minus.left=current}) right=Factor)*
 ;
 
 Factor returns Expression:
-	Primary (('*' {Multi.left=current} | '/' {Div.left=current}) right=Primary)*
+	{Primary} (('*' {Mult.left=current} | '/' {Div.left=current}) right=Primary)*
 ;
 
 Primary returns Expression:
-	Number | Parenthesis | VariableUse | VariableBinding
+    {Primary} (number=Number | parenthesis=Parenthesis | variableUse=VariableUse | variableBinding=VariableBinding)
 ;
 
 Parenthesis returns Expression:
@@ -23,13 +23,13 @@ Parenthesis returns Expression:
 ;
 
 Number returns Expression:
-	value=INT
+	{Num} value=INT
 ;
 
 VariableUse returns Expression:
-	id=ID
+	{Var} id=ID
 ;
 
 VariableBinding returns Expression: 
-	'let' id=ID '=' value=Exp 'in' body=Exp 'end'
+	{Let} 'let' id=ID '=' binding=Exp 'in' body=Exp 'end'
 ;

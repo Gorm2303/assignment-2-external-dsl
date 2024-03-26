@@ -3,13 +3,8 @@
  */
 package dk.sdu.mmmi.mdsd.generator
 
-import dk.sdu.mmmi.mdsd.math.Div
-import dk.sdu.mmmi.mdsd.math.Exp
 import dk.sdu.mmmi.mdsd.math.MathExp
-import dk.sdu.mmmi.mdsd.math.Minus
-import dk.sdu.mmmi.mdsd.math.Mult
-import dk.sdu.mmmi.mdsd.math.Plus
-import dk.sdu.mmmi.mdsd.math.Primary
+import dk.sdu.mmmi.mdsd.math.Factor
 import java.util.HashMap
 import java.util.Map
 import javax.swing.JOptionPane
@@ -17,6 +12,8 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import dk.sdu.mmmi.mdsd.math.Plus
+import dk.sdu.mmmi.mdsd.math.Minus
 
 /**
  * Generates code from your model files on save.
@@ -45,30 +42,41 @@ class MathGenerator extends AbstractGenerator {
 		return variables
 	}
 	
-	def static int computeExp(Exp exp) {
-		val left = exp.left.computePrim
-		switch exp.operator {
-			Plus: return left + exp.right.computePrim
-			Minus: return left - exp.right.computePrim
-			Mult: return left * exp.right.computePrim
-			Div: return left / exp.right.computePrim
-			default: return left
-		}
-	}
+def static int computeExp(Exp exp) {
+        val left = exp.left.computeFactor
+        switch exp.operator {
+            Plus: return left + exp.right.computeExp
+            Minus: return left - exp.right.computeExp
+            default: return left
+        }
+    }
 
-	def static int computePrim(Primary prim) { 
-		switch prim {
-			Number: return prim.value
-			Parenthesis: return prim.exp.computeExp
-			VariableUse: return variables.get(prim.variable.name)
-			default: throw new IllegalArgumentException("Unknown primary: " + prim)
-		}
-	}
+    def static int computeFactor(Factor factor) {
+        val left = factor.left.computePrimary
+        switch factor.operator {
+            Mult: return left * factor.right.computeFactor
+            Div: return left / factor.right.computeFactor
+            default: return left
+        }
+    }
+
+    def static int computePrimary(Primary prim) { 
+        switch prim {
+            Number: return prim.value
+            Parenthesis: return prim.exp.computeExp
+            VariableUse: return variables.get(prim.variable.name)
+            VariableBinding: {
+                variables.put(prim.variable.name, prim.exp.computeExp)
+                return variables.get(prim.variable.name)
+            }
+            default: throw new IllegalArgumentException("Unknown primary: " + prim)
+        }
+    }
 
 	def void displayPanel(Map<String, Integer> result) {
 		var resultString = ""
 		for (entry : result.entrySet()) {
-         	resultString += "var " + entry.getKey() + " = " + entry.getValue() + "\n"
+         	resultString += "result " + entry.getKey() + " = " + entry.getValue() + "\n"
         }
 		
 		JOptionPane.showMessageDialog(null, resultString ,"Math Language", JOptionPane.INFORMATION_MESSAGE)
