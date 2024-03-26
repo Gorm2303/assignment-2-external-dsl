@@ -165,55 +165,31 @@ public class MathGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	}
 	public class PrimaryElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.sdu.mmmi.mdsd.Math.Primary");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cPrimaryAction_0 = (Action)cGroup.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Assignment cNumberAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
-		private final RuleCall cNumberNumberParserRuleCall_1_0_0 = (RuleCall)cNumberAssignment_1_0.eContents().get(0);
-		private final Assignment cParenthesisAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
-		private final RuleCall cParenthesisParenthesisParserRuleCall_1_1_0 = (RuleCall)cParenthesisAssignment_1_1.eContents().get(0);
-		private final Assignment cVariableUseAssignment_1_2 = (Assignment)cAlternatives_1.eContents().get(2);
-		private final RuleCall cVariableUseVariableUseParserRuleCall_1_2_0 = (RuleCall)cVariableUseAssignment_1_2.eContents().get(0);
-		private final Assignment cVariableBindingAssignment_1_3 = (Assignment)cAlternatives_1.eContents().get(3);
-		private final RuleCall cVariableBindingVariableBindingParserRuleCall_1_3_0 = (RuleCall)cVariableBindingAssignment_1_3.eContents().get(0);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cNumberParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cParenthesisParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cVariableUseParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cVariableBindingParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
 		//Primary returns Expression:
-		//    {Primary} (number=Number | parenthesis=Parenthesis | variableUse=VariableUse | variableBinding=VariableBinding)
+		//    Number | Parenthesis | VariableUse | VariableBinding
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{Primary} (number=Number | parenthesis=Parenthesis | variableUse=VariableUse | variableBinding=VariableBinding)
-		public Group getGroup() { return cGroup; }
-		
-		//{Primary}
-		public Action getPrimaryAction_0() { return cPrimaryAction_0; }
-		
-		//(number=Number | parenthesis=Parenthesis | variableUse=VariableUse | variableBinding=VariableBinding)
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
-		
-		//number=Number
-		public Assignment getNumberAssignment_1_0() { return cNumberAssignment_1_0; }
+		//Number | Parenthesis | VariableUse | VariableBinding
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Number
-		public RuleCall getNumberNumberParserRuleCall_1_0_0() { return cNumberNumberParserRuleCall_1_0_0; }
-		
-		//parenthesis=Parenthesis
-		public Assignment getParenthesisAssignment_1_1() { return cParenthesisAssignment_1_1; }
+		public RuleCall getNumberParserRuleCall_0() { return cNumberParserRuleCall_0; }
 		
 		//Parenthesis
-		public RuleCall getParenthesisParenthesisParserRuleCall_1_1_0() { return cParenthesisParenthesisParserRuleCall_1_1_0; }
-		
-		//variableUse=VariableUse
-		public Assignment getVariableUseAssignment_1_2() { return cVariableUseAssignment_1_2; }
+		public RuleCall getParenthesisParserRuleCall_1() { return cParenthesisParserRuleCall_1; }
 		
 		//VariableUse
-		public RuleCall getVariableUseVariableUseParserRuleCall_1_2_0() { return cVariableUseVariableUseParserRuleCall_1_2_0; }
-		
-		//variableBinding=VariableBinding
-		public Assignment getVariableBindingAssignment_1_3() { return cVariableBindingAssignment_1_3; }
+		public RuleCall getVariableUseParserRuleCall_2() { return cVariableUseParserRuleCall_2; }
 		
 		//VariableBinding
-		public RuleCall getVariableBindingVariableBindingParserRuleCall_1_3_0() { return cVariableBindingVariableBindingParserRuleCall_1_3_0; }
+		public RuleCall getVariableBindingParserRuleCall_3() { return cVariableBindingParserRuleCall_3; }
 	}
 	public class ParenthesisElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "dk.sdu.mmmi.mdsd.Math.Parenthesis");
@@ -434,7 +410,7 @@ public class MathGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	}
 	
 	//Primary returns Expression:
-	//    {Primary} (number=Number | parenthesis=Parenthesis | variableUse=VariableUse | variableBinding=VariableBinding)
+	//    Number | Parenthesis | VariableUse | VariableBinding
 	//;
 	public PrimaryElements getPrimaryAccess() {
 		return pPrimary;

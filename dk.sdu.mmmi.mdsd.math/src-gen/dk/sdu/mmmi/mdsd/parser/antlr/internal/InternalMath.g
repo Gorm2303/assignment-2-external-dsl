@@ -274,94 +274,41 @@ rulePrimary returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			{
-				$current = forceCreateModelElement(
-					grammarAccess.getPrimaryAccess().getPrimaryAction_0(),
-					$current);
-			}
-		)
-		(
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getPrimaryAccess().getNumberNumberParserRuleCall_1_0_0());
-					}
-					lv_number_1_0=ruleNumber
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getPrimaryRule());
-						}
-						set(
-							$current,
-							"number",
-							lv_number_1_0,
-							"dk.sdu.mmmi.mdsd.Math.Number");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			    |
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getPrimaryAccess().getParenthesisParenthesisParserRuleCall_1_1_0());
-					}
-					lv_parenthesis_2_0=ruleParenthesis
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getPrimaryRule());
-						}
-						set(
-							$current,
-							"parenthesis",
-							lv_parenthesis_2_0,
-							"dk.sdu.mmmi.mdsd.Math.Parenthesis");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			    |
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getPrimaryAccess().getVariableUseVariableUseParserRuleCall_1_2_0());
-					}
-					lv_variableUse_3_0=ruleVariableUse
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getPrimaryRule());
-						}
-						set(
-							$current,
-							"variableUse",
-							lv_variableUse_3_0,
-							"dk.sdu.mmmi.mdsd.Math.VariableUse");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-			    |
-			(
-				(
-					{
-						newCompositeNode(grammarAccess.getPrimaryAccess().getVariableBindingVariableBindingParserRuleCall_1_3_0());
-					}
-					lv_variableBinding_4_0=ruleVariableBinding
-					{
-						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getPrimaryRule());
-						}
-						set(
-							$current,
-							"variableBinding",
-							lv_variableBinding_4_0,
-							"dk.sdu.mmmi.mdsd.Math.VariableBinding");
-						afterParserOrEnumRuleCall();
-					}
-				)
-			)
-		)
+		{
+			newCompositeNode(grammarAccess.getPrimaryAccess().getNumberParserRuleCall_0());
+		}
+		this_Number_0=ruleNumber
+		{
+			$current = $this_Number_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getPrimaryAccess().getParenthesisParserRuleCall_1());
+		}
+		this_Parenthesis_1=ruleParenthesis
+		{
+			$current = $this_Parenthesis_1.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getPrimaryAccess().getVariableUseParserRuleCall_2());
+		}
+		this_VariableUse_2=ruleVariableUse
+		{
+			$current = $this_VariableUse_2.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getPrimaryAccess().getVariableBindingParserRuleCall_3());
+		}
+		this_VariableBinding_3=ruleVariableBinding
+		{
+			$current = $this_VariableBinding_3.current;
+			afterParserOrEnumRuleCall();
+		}
 	)
 ;
 

@@ -15,7 +15,7 @@ Factor returns Expression:
 ;
 
 Primary returns Expression:
-    {Primary} (number=Number | parenthesis=Parenthesis | variableUse=VariableUse | variableBinding=VariableBinding)
+    Number | Parenthesis | VariableUse | VariableBinding
 ;
 
 Parenthesis returns Expression:

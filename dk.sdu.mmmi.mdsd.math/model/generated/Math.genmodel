@@ -19,12 +19,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Math.ecore#//Minus/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Math.ecore#//Minus/right"/>
     </genClasses>
-    <genClasses ecoreClass="Math.ecore#//Primary">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Math.ecore#//Primary/number"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Math.ecore#//Primary/parenthesis"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Math.ecore#//Primary/variableUse"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Math.ecore#//Primary/variableBinding"/>
-    </genClasses>
+    <genClasses ecoreClass="Math.ecore#//Primary"/>
     <genClasses ecoreClass="Math.ecore#//Mult">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Math.ecore#//Mult/left"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Math.ecore#//Mult/right"/>

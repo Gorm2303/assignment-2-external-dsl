@@ -14,6 +14,12 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import dk.sdu.mmmi.mdsd.math.Plus
 import dk.sdu.mmmi.mdsd.math.Minus
+import dk.sdu.mmmi.mdsd.math.Expression
+import dk.sdu.mmmi.mdsd.math.Mult
+import dk.sdu.mmmi.mdsd.math.Div
+import dk.sdu.mmmi.mdsd.math.Num
+import dk.sdu.mmmi.mdsd.math.Var
+import dk.sdu.mmmi.mdsd.math.Let
 
 /**
  * Generates code from your model files on save.
@@ -38,24 +44,24 @@ class MathGenerator extends AbstractGenerator {
 	//
 	
 	def static compute(MathExp math) { 
-		math.exp.computeExp
+		math.exp.computeExp(variables)
 		return variables
 	}
 	
-	def static int computeExp(Exp exp) {
+	def static int computeExp(Expression exp, Map<String, Integer> vars) {
         switch exp {
-            Plus: left.computeExp(variables) + right.computeExp(variables)
-            Minus: left.computeExp(variables) - right.computeExp(variables)
-            Mult: left.computeExp(variables) * right.computeExp(variables)
-			Div: left.computeExp(variables) / right.computeExp(variables)
+            Plus: exp.left.computeExp(vars) + exp.right.computeExp(vars)
+            Minus: exp.left.computeExp(vars) - exp.right.computeExp(vars)
+            Mult: exp.left.computeExp(vars) * exp.right.computeExp(vars)
+			Div: exp.left.computeExp(vars) / exp.right.computeExp(vars)
 			Num: exp.value
-			Var: variables.get(exp.id)
-			Let: body.computeExp(variables.bind(id, binding.computeExp(variables)))
+			Var: vars.get(exp.id)
+			Let: exp.body.computeExp(vars.bind(exp.id, exp.binding.computeExp(vars)))
 			default: throw new Error("Error in Expression")
         }
     }
 
-	def Map<String, Integer> bind(Map<String, Integer> env1, String name, int value) {
+	def static Map<String, Integer> bind(Map<String, Integer> env1, String name, int value) {
 		val env2 = new HashMap<String, Integer>(env1)
 		env2.put(name, value)
 		env2

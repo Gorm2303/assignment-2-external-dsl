@@ -66,17 +66,8 @@ public class MathSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				sequence_Exp(context, (Plus) semanticObject); 
 				return; 
 			case MathPackage.PRIMARY:
-				if (rule == grammarAccess.getFactorRule()
-						|| action == grammarAccess.getFactorAccess().getMultLeftAction_1_0_0_1()
-						|| action == grammarAccess.getFactorAccess().getDivLeftAction_1_0_1_1()) {
-					sequence_Factor(context, (Primary) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getPrimaryRule()) {
-					sequence_Primary(context, (Primary) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_Factor(context, (Primary) semanticObject); 
+				return; 
 			case MathPackage.VAR:
 				sequence_VariableUse(context, (Var) semanticObject); 
 				return; 
@@ -91,6 +82,7 @@ public class MathSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Exp returns Factor
 	 *     Exp.Plus_1_0_0_1 returns Factor
 	 *     Exp.Minus_1_0_1_1 returns Factor
+	 *     Primary returns Factor
 	 *     Parenthesis returns Factor
 	 *
 	 * Constraint:
@@ -108,6 +100,7 @@ public class MathSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Exp returns Minus
 	 *     Exp.Plus_1_0_0_1 returns Minus
 	 *     Exp.Minus_1_0_1_1 returns Minus
+	 *     Primary returns Minus
 	 *     Parenthesis returns Minus
 	 *
 	 * Constraint:
@@ -134,6 +127,7 @@ public class MathSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Exp returns Plus
 	 *     Exp.Plus_1_0_0_1 returns Plus
 	 *     Exp.Minus_1_0_1_1 returns Plus
+	 *     Primary returns Plus
 	 *     Parenthesis returns Plus
 	 *
 	 * Constraint:
@@ -243,6 +237,7 @@ public class MathSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Primary returns Num
 	 *     Number returns Num
 	 *
 	 * Constraint:
@@ -263,20 +258,7 @@ public class MathSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Primary returns Primary
-	 *
-	 * Constraint:
-	 *     (number=Number | parenthesis=Parenthesis | variableUse=VariableUse | variableBinding=VariableBinding)
-	 * </pre>
-	 */
-	protected void sequence_Primary(ISerializationContext context, Primary semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * <pre>
-	 * Contexts:
+	 *     Primary returns Let
 	 *     VariableBinding returns Let
 	 *
 	 * Constraint:
@@ -303,6 +285,7 @@ public class MathSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Primary returns Var
 	 *     VariableUse returns Var
 	 *
 	 * Constraint:

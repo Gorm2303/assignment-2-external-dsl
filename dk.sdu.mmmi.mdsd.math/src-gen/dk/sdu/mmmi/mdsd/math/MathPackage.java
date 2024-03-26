@@ -208,49 +208,13 @@ public interface MathPackage extends EPackage
   int PRIMARY = 5;
 
   /**
-   * The feature id for the '<em><b>Number</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY__NUMBER = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Parenthesis</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY__PARENTHESIS = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Variable Use</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY__VARIABLE_USE = EXPRESSION_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Variable Binding</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY__VARIABLE_BINDING = EXPRESSION_FEATURE_COUNT + 3;
-
-  /**
    * The number of structural features of the '<em>Primary</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PRIMARY_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 4;
+  int PRIMARY_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
    * The meta object id for the '{@link dk.sdu.mmmi.mdsd.math.impl.MultImpl <em>Mult</em>}' class.
@@ -545,50 +509,6 @@ public interface MathPackage extends EPackage
   EClass getPrimary();
 
   /**
-   * Returns the meta object for the containment reference '{@link dk.sdu.mmmi.mdsd.math.Primary#getNumber <em>Number</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Number</em>'.
-   * @see dk.sdu.mmmi.mdsd.math.Primary#getNumber()
-   * @see #getPrimary()
-   * @generated
-   */
-  EReference getPrimary_Number();
-
-  /**
-   * Returns the meta object for the containment reference '{@link dk.sdu.mmmi.mdsd.math.Primary#getParenthesis <em>Parenthesis</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Parenthesis</em>'.
-   * @see dk.sdu.mmmi.mdsd.math.Primary#getParenthesis()
-   * @see #getPrimary()
-   * @generated
-   */
-  EReference getPrimary_Parenthesis();
-
-  /**
-   * Returns the meta object for the containment reference '{@link dk.sdu.mmmi.mdsd.math.Primary#getVariableUse <em>Variable Use</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Variable Use</em>'.
-   * @see dk.sdu.mmmi.mdsd.math.Primary#getVariableUse()
-   * @see #getPrimary()
-   * @generated
-   */
-  EReference getPrimary_VariableUse();
-
-  /**
-   * Returns the meta object for the containment reference '{@link dk.sdu.mmmi.mdsd.math.Primary#getVariableBinding <em>Variable Binding</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Variable Binding</em>'.
-   * @see dk.sdu.mmmi.mdsd.math.Primary#getVariableBinding()
-   * @see #getPrimary()
-   * @generated
-   */
-  EReference getPrimary_VariableBinding();
-
-  /**
    * Returns the meta object for class '{@link dk.sdu.mmmi.mdsd.math.Mult <em>Mult</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -859,38 +779,6 @@ public interface MathPackage extends EPackage
      * @generated
      */
     EClass PRIMARY = eINSTANCE.getPrimary();
-
-    /**
-     * The meta object literal for the '<em><b>Number</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PRIMARY__NUMBER = eINSTANCE.getPrimary_Number();
-
-    /**
-     * The meta object literal for the '<em><b>Parenthesis</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PRIMARY__PARENTHESIS = eINSTANCE.getPrimary_Parenthesis();
-
-    /**
-     * The meta object literal for the '<em><b>Variable Use</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PRIMARY__VARIABLE_USE = eINSTANCE.getPrimary_VariableUse();
-
-    /**
-     * The meta object literal for the '<em><b>Variable Binding</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference PRIMARY__VARIABLE_BINDING = eINSTANCE.getPrimary_VariableBinding();
 
     /**
      * The meta object literal for the '{@link dk.sdu.mmmi.mdsd.math.impl.MultImpl <em>Mult</em>}' class.
