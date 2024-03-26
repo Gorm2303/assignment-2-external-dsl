@@ -48,16 +48,21 @@ class MathGenerator extends AbstractGenerator {
 	def static int computeExp(Exp exp) {
 		val left = exp.left.computePrim
 		switch exp.operator {
-			Plus: left+exp.right.computePrim
-			Minus: left-exp.right.computePrim
-			Mult: left*exp.right.computePrim
-			Div: left/exp.right.computePrim
-			default: left
+			Plus: return left + exp.right.computePrim
+			Minus: return left - exp.right.computePrim
+			Mult: return left * exp.right.computePrim
+			Div: return left / exp.right.computePrim
+			default: return left
 		}
 	}
-	
-	def static int computePrim(Primary factor) { 
-		87
+
+	def static int computePrim(Primary prim) { 
+		switch prim {
+			Number: return prim.value
+			Parenthesis: return prim.exp.computeExp
+			VariableUse: return variables.get(prim.variable.name)
+			default: throw new IllegalArgumentException("Unknown primary: " + prim)
+		}
 	}
 
 	def void displayPanel(Map<String, Integer> result) {

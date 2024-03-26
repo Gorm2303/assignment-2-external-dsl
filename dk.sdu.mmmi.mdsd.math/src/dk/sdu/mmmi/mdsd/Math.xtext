@@ -14,22 +14,22 @@ Factor returns Expression:
 	Primary (('*' {Multi.left=current} | '/' {Div.left=current}) right=Factor)*
 ;
 
-ExpOp:
+ExpOp returns Expression:
 	{Plus} '+' | {Minus} '-'	 | {Mult} '*' | {Div} '/'	
 ;
 
-Primary:
+Primary returns Expression:
 	Number | Parenthesis | VariableUse
 ;
 
-Parenthesis:
+Parenthesis returns Expression:
 	'(' exp=Exp ')'
 ;
 
-Number:
-	value=INT
+Number returns Expression:
+	{Num} value=INT
 ;
 
-VariableUse:
+VariableUse returns Expression:
 	ref = [MathExp]
 ;
