@@ -6,8 +6,12 @@ MathExp:
 	'var' name=ID '=' exp=Exp
 ;
 
-Exp:
-	left=Number (operator=ExpOp right=Number)?
+Exp returns Expression:
+	Factor (('+' {Plus.left=current} | '-' {Minus.left=current}) right=Factor)*
+;
+
+Factor returns Expression:
+	Primary (('*' {Multi.left=current} | '/' {Div.left=current}) right=Factor)*
 ;
 
 ExpOp:
