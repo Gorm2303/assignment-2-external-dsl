@@ -3,7 +3,7 @@ grammar dk.sdu.mmmi.mdsd.Math with org.eclipse.xtext.common.Terminals
 generate math "http://www.sdu.dk/mmmi/mdsd/Math"
 
 MathExp:
-	'var' name=ID '=' exp=Exp
+	'result' 'is' exp=Exp
 ;
 
 Exp returns Expression:
@@ -11,25 +11,25 @@ Exp returns Expression:
 ;
 
 Factor returns Expression:
-	Primary (('*' {Multi.left=current} | '/' {Div.left=current}) right=Factor)*
-;
-
-ExpOp returns Expression:
-	{Plus} '+' | {Minus} '-'	 | {Mult} '*' | {Div} '/'	
+	Primary (('*' {Multi.left=current} | '/' {Div.left=current}) right=Primary)*
 ;
 
 Primary returns Expression:
-	Number | Parenthesis | VariableUse
+	Number | Parenthesis | VariableUse | VariableBinding
 ;
 
 Parenthesis returns Expression:
-	'(' exp=Exp ')'
+	'(' Exp ')'
 ;
 
 Number returns Expression:
-	{Num} value=INT
+	value=INT
 ;
 
 VariableUse returns Expression:
-	ref = [MathExp]
+	id=ID
+;
+
+VariableBinding returns Expression: 
+	'let' id=ID '=' value=Exp 'in' body=Exp 'end'
 ;
