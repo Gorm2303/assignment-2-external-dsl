@@ -42,36 +42,24 @@ class MathGenerator extends AbstractGenerator {
 		return variables
 	}
 	
-def static int computeExp(Exp exp) {
-        val left = exp.left.computeFactor
-        switch exp.operator {
-            Plus: return left + exp.right.computeExp
-            Minus: return left - exp.right.computeExp
-            default: return left
+	def static int computeExp(Exp exp) {
+        switch exp {
+            Plus: left.computeExp(variables) + right.computeExp(variables)
+            Minus: left.computeExp(variables) - right.computeExp(variables)
+            Mult: left.computeExp(variables) * right.computeExp(variables)
+			Div: left.computeExp(variables) / right.computeExp(variables)
+			Num: exp.value
+			Var: variables.get(exp.id)
+			Let: body.computeExp(variables.bind(id, binding.computeExp(variables)))
+			default: throw new Error("Error in Expression")
         }
     }
 
-    def static int computeFactor(Factor factor) {
-        val left = factor.left.computePrimary
-        switch factor.operator {
-            Mult: return left * factor.right.computeFactor
-            Div: return left / factor.right.computeFactor
-            default: return left
-        }
-    }
-
-    def static int computePrimary(Primary prim) { 
-        switch prim {
-            Number: return prim.value
-            Parenthesis: return prim.exp.computeExp
-            VariableUse: return variables.get(prim.variable.name)
-            VariableBinding: {
-                variables.put(prim.variable.name, prim.exp.computeExp)
-                return variables.get(prim.variable.name)
-            }
-            default: throw new IllegalArgumentException("Unknown primary: " + prim)
-        }
-    }
+	def Map<String, Integer> bind(Map<String, Integer> env1, String name, int value) {
+		val env2 = new HashMap<String, Integer>(env1)
+		env2.put(name, value)
+		env2
+	}
 
 	def void displayPanel(Map<String, Integer> result) {
 		var resultString = ""
