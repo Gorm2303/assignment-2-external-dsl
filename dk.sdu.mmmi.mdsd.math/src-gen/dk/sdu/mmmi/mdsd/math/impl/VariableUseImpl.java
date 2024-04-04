@@ -3,55 +3,48 @@
  */
 package dk.sdu.mmmi.mdsd.math.impl;
 
-import dk.sdu.mmmi.mdsd.math.MathExp;
+import dk.sdu.mmmi.mdsd.math.Binding;
 import dk.sdu.mmmi.mdsd.math.MathPackage;
-import dk.sdu.mmmi.mdsd.math.VarBinding;
+import dk.sdu.mmmi.mdsd.math.VariableUse;
 
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Exp</b></em>'.
+ * An implementation of the model object '<em><b>Variable Use</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.MathExpImpl#getVariables <em>Variables</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.VariableUseImpl#getRef <em>Ref</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
+public class VariableUseImpl extends ExpressionImpl implements VariableUse
 {
   /**
-   * The cached value of the '{@link #getVariables() <em>Variables</em>}' containment reference list.
+   * The cached value of the '{@link #getRef() <em>Ref</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVariables()
+   * @see #getRef()
    * @generated
    * @ordered
    */
-  protected EList<VarBinding> variables;
+  protected Binding ref;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected MathExpImpl()
+  protected VariableUseImpl()
   {
     super();
   }
@@ -64,7 +57,7 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
   @Override
   protected EClass eStaticClass()
   {
-    return MathPackage.Literals.MATH_EXP;
+    return MathPackage.Literals.VARIABLE_USE;
   }
 
   /**
@@ -73,13 +66,29 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
    * @generated
    */
   @Override
-  public EList<VarBinding> getVariables()
+  public Binding getRef()
   {
-    if (variables == null)
+    if (ref != null && ref.eIsProxy())
     {
-      variables = new EObjectContainmentEList<VarBinding>(VarBinding.class, this, MathPackage.MATH_EXP__VARIABLES);
+      InternalEObject oldRef = (InternalEObject)ref;
+      ref = (Binding)eResolveProxy(oldRef);
+      if (ref != oldRef)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, MathPackage.VARIABLE_USE__REF, oldRef, ref));
+      }
     }
-    return variables;
+    return ref;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Binding basicGetRef()
+  {
+    return ref;
   }
 
   /**
@@ -88,14 +97,12 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  public void setRef(Binding newRef)
   {
-    switch (featureID)
-    {
-      case MathPackage.MATH_EXP__VARIABLES:
-        return ((InternalEList<?>)getVariables()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    Binding oldRef = ref;
+    ref = newRef;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.VARIABLE_USE__REF, oldRef, ref));
   }
 
   /**
@@ -108,8 +115,9 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
   {
     switch (featureID)
     {
-      case MathPackage.MATH_EXP__VARIABLES:
-        return getVariables();
+      case MathPackage.VARIABLE_USE__REF:
+        if (resolve) return getRef();
+        return basicGetRef();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,15 +127,13 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case MathPackage.MATH_EXP__VARIABLES:
-        getVariables().clear();
-        getVariables().addAll((Collection<? extends VarBinding>)newValue);
+      case MathPackage.VARIABLE_USE__REF:
+        setRef((Binding)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -143,8 +149,8 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
   {
     switch (featureID)
     {
-      case MathPackage.MATH_EXP__VARIABLES:
-        getVariables().clear();
+      case MathPackage.VARIABLE_USE__REF:
+        setRef((Binding)null);
         return;
     }
     super.eUnset(featureID);
@@ -160,10 +166,10 @@ public class MathExpImpl extends MinimalEObjectImpl.Container implements MathExp
   {
     switch (featureID)
     {
-      case MathPackage.MATH_EXP__VARIABLES:
-        return variables != null && !variables.isEmpty();
+      case MathPackage.VARIABLE_USE__REF:
+        return ref != null;
     }
     return super.eIsSet(featureID);
   }
 
-} //MathExpImpl
+} //VariableUseImpl

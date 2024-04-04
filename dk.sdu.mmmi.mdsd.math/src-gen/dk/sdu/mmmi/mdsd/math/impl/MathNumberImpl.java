@@ -3,8 +3,8 @@
  */
 package dk.sdu.mmmi.mdsd.math.impl;
 
+import dk.sdu.mmmi.mdsd.math.MathNumber;
 import dk.sdu.mmmi.mdsd.math.MathPackage;
-import dk.sdu.mmmi.mdsd.math.Var;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -14,45 +14,45 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Var</b></em>'.
+ * An implementation of the model object '<em><b>Number</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.VarImpl#getId <em>Id</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.MathNumberImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class VarImpl extends ExpressionImpl implements Var
+public class MathNumberImpl extends ExpressionImpl implements MathNumber
 {
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getId()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected static final String ID_EDEFAULT = null;
+  protected static final int VALUE_EDEFAULT = 0;
 
   /**
-   * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getId()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected String id = ID_EDEFAULT;
+  protected int value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected VarImpl()
+  protected MathNumberImpl()
   {
     super();
   }
@@ -65,7 +65,7 @@ public class VarImpl extends ExpressionImpl implements Var
   @Override
   protected EClass eStaticClass()
   {
-    return MathPackage.Literals.VAR;
+    return MathPackage.Literals.MATH_NUMBER;
   }
 
   /**
@@ -74,9 +74,9 @@ public class VarImpl extends ExpressionImpl implements Var
    * @generated
    */
   @Override
-  public String getId()
+  public int getValue()
   {
-    return id;
+    return value;
   }
 
   /**
@@ -85,12 +85,12 @@ public class VarImpl extends ExpressionImpl implements Var
    * @generated
    */
   @Override
-  public void setId(String newId)
+  public void setValue(int newValue)
   {
-    String oldId = id;
-    id = newId;
+    int oldValue = value;
+    value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.VAR__ID, oldId, id));
+      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.MATH_NUMBER__VALUE, oldValue, value));
   }
 
   /**
@@ -103,8 +103,8 @@ public class VarImpl extends ExpressionImpl implements Var
   {
     switch (featureID)
     {
-      case MathPackage.VAR__ID:
-        return getId();
+      case MathPackage.MATH_NUMBER__VALUE:
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,8 +119,8 @@ public class VarImpl extends ExpressionImpl implements Var
   {
     switch (featureID)
     {
-      case MathPackage.VAR__ID:
-        setId((String)newValue);
+      case MathPackage.MATH_NUMBER__VALUE:
+        setValue((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,8 +136,8 @@ public class VarImpl extends ExpressionImpl implements Var
   {
     switch (featureID)
     {
-      case MathPackage.VAR__ID:
-        setId(ID_EDEFAULT);
+      case MathPackage.MATH_NUMBER__VALUE:
+        setValue(VALUE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -153,8 +153,8 @@ public class VarImpl extends ExpressionImpl implements Var
   {
     switch (featureID)
     {
-      case MathPackage.VAR__ID:
-        return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+      case MathPackage.MATH_NUMBER__VALUE:
+        return value != VALUE_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -170,10 +170,10 @@ public class VarImpl extends ExpressionImpl implements Var
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (id: ");
-    result.append(id);
+    result.append(" (value: ");
+    result.append(value);
     result.append(')');
     return result.toString();
   }
 
-} //VarImpl
+} //MathNumberImpl

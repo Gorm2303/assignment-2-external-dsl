@@ -6,21 +6,21 @@ package dk.sdu.mmmi.mdsd.math;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Num</b></em>'.
+ * A representation of the model object '<em><b>Number</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.Num#getValue <em>Value</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.MathNumber#getValue <em>Value</em>}</li>
  * </ul>
  *
- * @see dk.sdu.mmmi.mdsd.math.MathPackage#getNum()
+ * @see dk.sdu.mmmi.mdsd.math.MathPackage#getMathNumber()
  * @model
  * @generated
  */
-public interface Num extends Expression
+public interface MathNumber extends Expression
 {
   /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.
@@ -28,14 +28,14 @@ public interface Num extends Expression
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' attribute.
    * @see #setValue(int)
-   * @see dk.sdu.mmmi.mdsd.math.MathPackage#getNum_Value()
+   * @see dk.sdu.mmmi.mdsd.math.MathPackage#getMathNumber_Value()
    * @model
    * @generated
    */
   int getValue();
 
   /**
-   * Sets the value of the '{@link dk.sdu.mmmi.mdsd.math.Num#getValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link dk.sdu.mmmi.mdsd.math.MathNumber#getValue <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Value</em>' attribute.
@@ -44,4 +44,4 @@ public interface Num extends Expression
    */
   void setValue(int value);
 
-} // Num
+} // MathNumber

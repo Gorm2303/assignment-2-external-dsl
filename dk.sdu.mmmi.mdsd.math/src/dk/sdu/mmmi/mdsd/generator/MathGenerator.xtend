@@ -3,8 +3,15 @@
  */
 package dk.sdu.mmmi.mdsd.generator
 
+import dk.sdu.mmmi.mdsd.math.Div
+import dk.sdu.mmmi.mdsd.math.LetBinding
 import dk.sdu.mmmi.mdsd.math.MathExp
-import dk.sdu.mmmi.mdsd.math.Factor
+import dk.sdu.mmmi.mdsd.math.MathNumber
+import dk.sdu.mmmi.mdsd.math.Minus
+import dk.sdu.mmmi.mdsd.math.Mult
+import dk.sdu.mmmi.mdsd.math.Plus
+import dk.sdu.mmmi.mdsd.math.VarBinding
+import dk.sdu.mmmi.mdsd.math.VariableUse
 import java.util.HashMap
 import java.util.Map
 import javax.swing.JOptionPane
@@ -12,14 +19,6 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
-import dk.sdu.mmmi.mdsd.math.Plus
-import dk.sdu.mmmi.mdsd.math.Minus
-import dk.sdu.mmmi.mdsd.math.Expression
-import dk.sdu.mmmi.mdsd.math.Mult
-import dk.sdu.mmmi.mdsd.math.Div
-import dk.sdu.mmmi.mdsd.math.Num
-import dk.sdu.mmmi.mdsd.math.Var
-import dk.sdu.mmmi.mdsd.math.Let
 
 /**
  * Generates code from your model files on save.
@@ -27,52 +26,73 @@ import dk.sdu.mmmi.mdsd.math.Let
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class MathGenerator extends AbstractGenerator {
-
-	static Map<String, Integer> variables = new HashMap();
 	
+	static Map<String, Integer> variables;
+
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		val math = resource.allContents.filter(MathExp).next
 		val result = math.compute
-		
-		// You can replace with hovering, see Bettini Chapter 8
 		result.displayPanel
+		
 	}
-	
-	//
-	// Compute function: computes value of expression
-	// Note: written according to illegal left-recursive grammar, requires fix
-	//
-	
-	def static compute(MathExp math) { 
-		math.exp.computeExp(variables)
-		return variables
-	}
-	
-	def static int computeExp(Expression exp, Map<String, Integer> vars) {
-        switch exp {
-            Plus: exp.left.computeExp(vars) + exp.right.computeExp(vars)
-            Minus: exp.left.computeExp(vars) - exp.right.computeExp(vars)
-            Mult: exp.left.computeExp(vars) * exp.right.computeExp(vars)
-			Div: exp.left.computeExp(vars) / exp.right.computeExp(vars)
-			Num: exp.value
-			Var: vars.get(exp.id)
-			Let: exp.body.computeExp(vars.bind(exp.id, exp.binding.computeExp(vars)))
-			default: throw new Error("Error in Expression")
-        }
-    }
-
-	def static Map<String, Integer> bind(Map<String, Integer> env1, String name, int value) {
-		val env2 = new HashMap<String, Integer>(env1)
-		env2.put(name, value)
-		env2
-	}
-
+		
 	def void displayPanel(Map<String, Integer> result) {
 		var resultString = ""
 		for (entry : result.entrySet()) {
-         	resultString += "result " + entry.getKey() + " = " + entry.getValue() + "\n"
+         	resultString += "var " + entry.getKey() + " = " + entry.getValue() + "\n"
         }
 		
 		JOptionPane.showMessageDialog(null, resultString ,"Math Language", JOptionPane.INFORMATION_MESSAGE)
 	}
+	
+	def static compute(MathExp math) {
+		variables = new HashMap()
+		for(varBinding: math.variables)
+			varBinding.computeExpression()
+		variables
+	}
+	
+	def static dispatch int computeExpression(VarBinding binding) {
+		variables.put(binding.name, binding.expression.computeExpression())
+		return variables.get(binding.name)
+	}
+	
+	def static dispatch int computeExpression(MathNumber exp) {
+		exp.value
+	}
+
+	def static dispatch int computeExpression(Plus exp) {
+		exp.left.computeExpression + exp.right.computeExpression
+	}
+	
+	def static dispatch int computeExpression(Minus exp) {
+		exp.left.computeExpression - exp.right.computeExpression
+	}
+	
+	def static dispatch int computeExpression(Mult exp) {
+		exp.left.computeExpression * exp.right.computeExpression
+	}
+	
+	def static dispatch int computeExpression(Div exp) {
+		exp.left.computeExpression / exp.right.computeExpression
+	}
+
+	def static dispatch int computeExpression(LetBinding exp) {
+		exp.body.computeExpression
+	}
+	
+	def static dispatch int computeExpression(VariableUse exp) {
+		exp.ref.computeBinding
+	}
+
+	def static dispatch int computeBinding(VarBinding binding){
+		if(!variables.containsKey(binding.name))
+			binding.computeExpression()			
+		variables.get(binding.name)
+	}
+	
+	def static dispatch int computeBinding(LetBinding binding){
+		binding.binding.computeExpression
+	}
+	
 }

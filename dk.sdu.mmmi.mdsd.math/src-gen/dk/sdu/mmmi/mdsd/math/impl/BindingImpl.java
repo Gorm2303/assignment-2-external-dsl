@@ -3,56 +3,57 @@
  */
 package dk.sdu.mmmi.mdsd.math.impl;
 
+import dk.sdu.mmmi.mdsd.math.Binding;
 import dk.sdu.mmmi.mdsd.math.MathPackage;
-import dk.sdu.mmmi.mdsd.math.Num;
 
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Num</b></em>'.
+ * An implementation of the model object '<em><b>Binding</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.NumImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.BindingImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class NumImpl extends ExpressionImpl implements Num
+public class BindingImpl extends MinimalEObjectImpl.Container implements Binding
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final int VALUE_EDEFAULT = 0;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected int value = VALUE_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected NumImpl()
+  protected BindingImpl()
   {
     super();
   }
@@ -65,7 +66,7 @@ public class NumImpl extends ExpressionImpl implements Num
   @Override
   protected EClass eStaticClass()
   {
-    return MathPackage.Literals.NUM;
+    return MathPackage.Literals.BINDING;
   }
 
   /**
@@ -74,9 +75,9 @@ public class NumImpl extends ExpressionImpl implements Num
    * @generated
    */
   @Override
-  public int getValue()
+  public String getName()
   {
-    return value;
+    return name;
   }
 
   /**
@@ -85,12 +86,12 @@ public class NumImpl extends ExpressionImpl implements Num
    * @generated
    */
   @Override
-  public void setValue(int newValue)
+  public void setName(String newName)
   {
-    int oldValue = value;
-    value = newValue;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.NUM__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.BINDING__NAME, oldName, name));
   }
 
   /**
@@ -103,8 +104,8 @@ public class NumImpl extends ExpressionImpl implements Num
   {
     switch (featureID)
     {
-      case MathPackage.NUM__VALUE:
-        return getValue();
+      case MathPackage.BINDING__NAME:
+        return getName();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,8 +120,8 @@ public class NumImpl extends ExpressionImpl implements Num
   {
     switch (featureID)
     {
-      case MathPackage.NUM__VALUE:
-        setValue((Integer)newValue);
+      case MathPackage.BINDING__NAME:
+        setName((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,8 +137,8 @@ public class NumImpl extends ExpressionImpl implements Num
   {
     switch (featureID)
     {
-      case MathPackage.NUM__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case MathPackage.BINDING__NAME:
+        setName(NAME_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -153,8 +154,8 @@ public class NumImpl extends ExpressionImpl implements Num
   {
     switch (featureID)
     {
-      case MathPackage.NUM__VALUE:
-        return value != VALUE_EDEFAULT;
+      case MathPackage.BINDING__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
     return super.eIsSet(featureID);
   }
@@ -170,10 +171,10 @@ public class NumImpl extends ExpressionImpl implements Num
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (value: ");
-    result.append(value);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }
 
-} //NumImpl
+} //BindingImpl

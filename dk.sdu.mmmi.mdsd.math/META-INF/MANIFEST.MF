@@ -27,4 +27,5 @@ Export-Package: dk.sdu.mmmi.mdsd.math,
  dk.sdu.mmmi.mdsd.parser.antlr.internal,
  dk.sdu.mmmi.mdsd,
  dk.sdu.mmmi.mdsd.math.util
-Import-Package: org.apache.log4j
+Import-Package: org.apache.log4j,
+ org.junit.jupiter.api;version="5.10.1"

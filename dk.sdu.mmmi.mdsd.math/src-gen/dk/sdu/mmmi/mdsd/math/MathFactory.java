@@ -33,6 +33,15 @@ public interface MathFactory extends EFactory
   MathExp createMathExp();
 
   /**
+   * Returns a new object of class '<em>Var Binding</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Var Binding</em>'.
+   * @generated
+   */
+  VarBinding createVarBinding();
+
+  /**
    * Returns a new object of class '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -42,13 +51,31 @@ public interface MathFactory extends EFactory
   Expression createExpression();
 
   /**
-   * Returns a new object of class '<em>Factor</em>'.
+   * Returns a new object of class '<em>Let Binding</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Factor</em>'.
+   * @return a new object of class '<em>Let Binding</em>'.
    * @generated
    */
-  Factor createFactor();
+  LetBinding createLetBinding();
+
+  /**
+   * Returns a new object of class '<em>Binding</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Binding</em>'.
+   * @generated
+   */
+  Binding createBinding();
+
+  /**
+   * Returns a new object of class '<em>Variable Use</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Use</em>'.
+   * @generated
+   */
+  VariableUse createVariableUse();
 
   /**
    * Returns a new object of class '<em>Plus</em>'.
@@ -69,15 +96,6 @@ public interface MathFactory extends EFactory
   Minus createMinus();
 
   /**
-   * Returns a new object of class '<em>Primary</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Primary</em>'.
-   * @generated
-   */
-  Primary createPrimary();
-
-  /**
    * Returns a new object of class '<em>Mult</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -96,31 +114,13 @@ public interface MathFactory extends EFactory
   Div createDiv();
 
   /**
-   * Returns a new object of class '<em>Num</em>'.
+   * Returns a new object of class '<em>Number</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Num</em>'.
+   * @return a new object of class '<em>Number</em>'.
    * @generated
    */
-  Num createNum();
-
-  /**
-   * Returns a new object of class '<em>Var</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Var</em>'.
-   * @generated
-   */
-  Var createVar();
-
-  /**
-   * Returns a new object of class '<em>Let</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Let</em>'.
-   * @generated
-   */
-  Let createLet();
+  MathNumber createMathNumber();
 
   /**
    * Returns the package supported by this factory.

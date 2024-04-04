@@ -3,8 +3,9 @@
  */
 package dk.sdu.mmmi.mdsd.math.impl;
 
+import dk.sdu.mmmi.mdsd.math.Binding;
 import dk.sdu.mmmi.mdsd.math.Expression;
-import dk.sdu.mmmi.mdsd.math.Let;
+import dk.sdu.mmmi.mdsd.math.LetBinding;
 import dk.sdu.mmmi.mdsd.math.MathPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -17,40 +18,40 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Let</b></em>'.
+ * An implementation of the model object '<em><b>Let Binding</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.LetImpl#getId <em>Id</em>}</li>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.LetImpl#getBinding <em>Binding</em>}</li>
- *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.LetImpl#getBody <em>Body</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.LetBindingImpl#getName <em>Name</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.LetBindingImpl#getBinding <em>Binding</em>}</li>
+ *   <li>{@link dk.sdu.mmmi.mdsd.math.impl.LetBindingImpl#getBody <em>Body</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class LetImpl extends ExpressionImpl implements Let
+public class LetBindingImpl extends ExpressionImpl implements LetBinding
 {
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getId()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected static final String ID_EDEFAULT = null;
+  protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getId()
+   * @see #getName()
    * @generated
    * @ordered
    */
-  protected String id = ID_EDEFAULT;
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getBinding() <em>Binding</em>}' containment reference.
@@ -77,7 +78,7 @@ public class LetImpl extends ExpressionImpl implements Let
    * <!-- end-user-doc -->
    * @generated
    */
-  protected LetImpl()
+  protected LetBindingImpl()
   {
     super();
   }
@@ -90,7 +91,7 @@ public class LetImpl extends ExpressionImpl implements Let
   @Override
   protected EClass eStaticClass()
   {
-    return MathPackage.Literals.LET;
+    return MathPackage.Literals.LET_BINDING;
   }
 
   /**
@@ -99,9 +100,9 @@ public class LetImpl extends ExpressionImpl implements Let
    * @generated
    */
   @Override
-  public String getId()
+  public String getName()
   {
-    return id;
+    return name;
   }
 
   /**
@@ -110,12 +111,12 @@ public class LetImpl extends ExpressionImpl implements Let
    * @generated
    */
   @Override
-  public void setId(String newId)
+  public void setName(String newName)
   {
-    String oldId = id;
-    id = newId;
+    String oldName = name;
+    name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.LET__ID, oldId, id));
+      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.LET_BINDING__NAME, oldName, name));
   }
 
   /**
@@ -140,7 +141,7 @@ public class LetImpl extends ExpressionImpl implements Let
     binding = newBinding;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MathPackage.LET__BINDING, oldBinding, newBinding);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MathPackage.LET_BINDING__BINDING, oldBinding, newBinding);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -158,14 +159,14 @@ public class LetImpl extends ExpressionImpl implements Let
     {
       NotificationChain msgs = null;
       if (binding != null)
-        msgs = ((InternalEObject)binding).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET__BINDING, null, msgs);
+        msgs = ((InternalEObject)binding).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET_BINDING__BINDING, null, msgs);
       if (newBinding != null)
-        msgs = ((InternalEObject)newBinding).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET__BINDING, null, msgs);
+        msgs = ((InternalEObject)newBinding).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET_BINDING__BINDING, null, msgs);
       msgs = basicSetBinding(newBinding, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.LET__BINDING, newBinding, newBinding));
+      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.LET_BINDING__BINDING, newBinding, newBinding));
   }
 
   /**
@@ -190,7 +191,7 @@ public class LetImpl extends ExpressionImpl implements Let
     body = newBody;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MathPackage.LET__BODY, oldBody, newBody);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, MathPackage.LET_BINDING__BODY, oldBody, newBody);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -208,14 +209,14 @@ public class LetImpl extends ExpressionImpl implements Let
     {
       NotificationChain msgs = null;
       if (body != null)
-        msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET__BODY, null, msgs);
+        msgs = ((InternalEObject)body).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET_BINDING__BODY, null, msgs);
       if (newBody != null)
-        msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET__BODY, null, msgs);
+        msgs = ((InternalEObject)newBody).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - MathPackage.LET_BINDING__BODY, null, msgs);
       msgs = basicSetBody(newBody, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.LET__BODY, newBody, newBody));
+      eNotify(new ENotificationImpl(this, Notification.SET, MathPackage.LET_BINDING__BODY, newBody, newBody));
   }
 
   /**
@@ -228,9 +229,9 @@ public class LetImpl extends ExpressionImpl implements Let
   {
     switch (featureID)
     {
-      case MathPackage.LET__BINDING:
+      case MathPackage.LET_BINDING__BINDING:
         return basicSetBinding(null, msgs);
-      case MathPackage.LET__BODY:
+      case MathPackage.LET_BINDING__BODY:
         return basicSetBody(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -246,11 +247,11 @@ public class LetImpl extends ExpressionImpl implements Let
   {
     switch (featureID)
     {
-      case MathPackage.LET__ID:
-        return getId();
-      case MathPackage.LET__BINDING:
+      case MathPackage.LET_BINDING__NAME:
+        return getName();
+      case MathPackage.LET_BINDING__BINDING:
         return getBinding();
-      case MathPackage.LET__BODY:
+      case MathPackage.LET_BINDING__BODY:
         return getBody();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -266,13 +267,13 @@ public class LetImpl extends ExpressionImpl implements Let
   {
     switch (featureID)
     {
-      case MathPackage.LET__ID:
-        setId((String)newValue);
+      case MathPackage.LET_BINDING__NAME:
+        setName((String)newValue);
         return;
-      case MathPackage.LET__BINDING:
+      case MathPackage.LET_BINDING__BINDING:
         setBinding((Expression)newValue);
         return;
-      case MathPackage.LET__BODY:
+      case MathPackage.LET_BINDING__BODY:
         setBody((Expression)newValue);
         return;
     }
@@ -289,13 +290,13 @@ public class LetImpl extends ExpressionImpl implements Let
   {
     switch (featureID)
     {
-      case MathPackage.LET__ID:
-        setId(ID_EDEFAULT);
+      case MathPackage.LET_BINDING__NAME:
+        setName(NAME_EDEFAULT);
         return;
-      case MathPackage.LET__BINDING:
+      case MathPackage.LET_BINDING__BINDING:
         setBinding((Expression)null);
         return;
-      case MathPackage.LET__BODY:
+      case MathPackage.LET_BINDING__BODY:
         setBody((Expression)null);
         return;
     }
@@ -312,14 +313,52 @@ public class LetImpl extends ExpressionImpl implements Let
   {
     switch (featureID)
     {
-      case MathPackage.LET__ID:
-        return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-      case MathPackage.LET__BINDING:
+      case MathPackage.LET_BINDING__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case MathPackage.LET_BINDING__BINDING:
         return binding != null;
-      case MathPackage.LET__BODY:
+      case MathPackage.LET_BINDING__BODY:
         return body != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Binding.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case MathPackage.LET_BINDING__NAME: return MathPackage.BINDING__NAME;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Binding.class)
+    {
+      switch (baseFeatureID)
+      {
+        case MathPackage.BINDING__NAME: return MathPackage.LET_BINDING__NAME;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**
@@ -333,10 +372,10 @@ public class LetImpl extends ExpressionImpl implements Let
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (id: ");
-    result.append(id);
+    result.append(" (name: ");
+    result.append(name);
     result.append(')');
     return result.toString();
   }
 
-} //LetImpl
+} //LetBindingImpl
